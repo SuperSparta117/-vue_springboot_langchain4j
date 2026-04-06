@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: springandlangchain4j
+server:
+  port: 1264
+  servlet:
+    context-path: /api # 设置所有请求都要带上 /api 前缀， 例如访问/hello会变成/api/hello
+
+
+# knife4j。访问http://localhost:1264/api/doc.html 能得到类似postman的网页，测试request的body
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn
+springdoc: #knife4j 会增强springdoc的功能，所以需要配置springdoc
+  group-configs:
+    - group: 'default'
+      packages-to-scan: com.liuming.springandlangchain4j.controller
+
