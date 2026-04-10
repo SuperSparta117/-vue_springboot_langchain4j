@@ -27,7 +27,8 @@
 		<url/>
 	</scm>
 	<properties>
-		<java.version>21</java.version>
+		<java.version>17</java.version>
+		<jacoco.dataFile>${user.home}/jacoco-springandlangchain4j.exec</jacoco.dataFile>
 	</properties>
 	<dependencies>
 		<!-- 基本依赖 -->
@@ -75,6 +76,28 @@
 			<artifactId>spring-boot-starter-aop</artifactId>
 		</dependency>
 
+		<!-- mybatis-flex核心模块，提供了MyBatis的增强功能，例如Lambda表达式、链式调用、自动分页等。 -->
+		<dependency>
+			<groupId>com.mybatis-flex</groupId>
+			<artifactId>mybatis-flex-spring-boot3-starter</artifactId>
+			<version>1.11.0</version>
+		</dependency>
+		<!-- 代码生成模块 -->
+		<dependency>
+			<groupId>com.mybatis-flex</groupId>
+			<artifactId>mybatis-flex-codegen</artifactId>
+			<version>1.11.0</version>
+		</dependency>
+		<!-- 数据库连接池 -->
+		<dependency>
+			<groupId>com.zaxxer</groupId>
+			<artifactId>HikariCP</artifactId>
+		</dependency>
+
+		
+
+
+ 
 
 	</dependencies>
 
@@ -128,6 +151,60 @@
 									<artifactId>lombok</artifactId>
 								</path>
 							</annotationProcessorPaths>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+
+
+
+
+
+
+
+
+
+
+			<!-- 如下是测试相关的工具 -->
+			<!-- 单元测试插件，可写可不写；显式指定版本更稳 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.5.5</version>
+				<configuration>
+					<argLine>@{jacocoArgLine}</argLine>
+				</configuration>
+			</plugin>
+
+			<!-- JaCoCo 覆盖率插件 -->
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.14</version>
+				<executions>
+					<!-- 在测试前挂载 JaCoCo agent -->
+					<execution>
+						<id>prepare-agent</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+						<configuration>
+							<propertyName>jacocoArgLine</propertyName>
+							<destFile>${jacoco.dataFile}</destFile>
+						</configuration>
+					</execution>
+
+					<!-- 测试结束后生成覆盖率报告 -->
+					<execution>
+						<id>report</id>
+						<phase>test</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+						<configuration>
+							<dataFile>${jacoco.dataFile}</dataFile>
+							<outputDirectory>${project.build.directory}/site/jacoco</outputDirectory>
 						</configuration>
 					</execution>
 				</executions>

@@ -1,9 +1,10 @@
 import axios from 'axios'
 import { message } from 'ant-design-vue'
+import { 服务器请求地址 } from  '@/stores/全局变量.js'
 
 // 创建 Axios 实例
 const myAxios = axios.create({
-  baseURL: import.meta.env.服务器请求地址,
+  baseURL: 服务器请求地址,
   timeout: 60000,
   withCredentials: true,//一定要写，否则无法在发请求时携带 Cookie，也就无法在后端获取到用户的登录状态了
 })

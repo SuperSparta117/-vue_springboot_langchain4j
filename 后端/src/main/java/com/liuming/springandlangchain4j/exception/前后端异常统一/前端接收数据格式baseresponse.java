@@ -18,7 +18,7 @@ import lombok.Data;
 //   "message": "ok"
 // }
 @Data
-public class 前端接收数据格式response<T> implements Serializable {
+public class 前端接收数据格式baseresponse<T> implements Serializable {
 
     private int code;
 
@@ -26,17 +26,17 @@ public class 前端接收数据格式response<T> implements Serializable {
 
     private String message;
 
-    public 前端接收数据格式response(int code, T data, String message) {
+    public 前端接收数据格式baseresponse(int code, T data, String message) {
         this.code = code;
         this.data = data;
         this.message = message;
     }
 
-    public 前端接收数据格式response(int code, T data) {
+    public 前端接收数据格式baseresponse(int code, T data) {
         this(code, data, "");
     }
 
-    public 前端接收数据格式response(错误代码 errorCode) {
+    public 前端接收数据格式baseresponse(错误代码 errorCode) {
         this(errorCode.getCode(), null, errorCode.getMessage());
     }
 }

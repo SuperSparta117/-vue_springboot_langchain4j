@@ -6,9 +6,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class 跨域设置 implements WebMvcConfigurer {
-
+    @SuppressWarnings("null")
     @Override
-    public void addCorsMappings(CorsRegistry registry) {
+    public void addCorsMappings( CorsRegistry registry) {
         // 覆盖所有请求
         registry.addMapping("/**")
                 // 允许发送 Cookie

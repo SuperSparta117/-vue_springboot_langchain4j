@@ -1,6 +1,11 @@
 spring:
   application:
     name: springandlangchain4j
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/vue_sprigboot_langchain4j
+    username: root
+    password: 1264917182
 server:
   port: 1264
   servlet:
@@ -16,4 +21,3 @@ springdoc: #knife4j 会增强springdoc的功能，所以需要配置springdoc
   group-configs:
     - group: 'default'
       packages-to-scan: com.liuming.springandlangchain4j.controller
-

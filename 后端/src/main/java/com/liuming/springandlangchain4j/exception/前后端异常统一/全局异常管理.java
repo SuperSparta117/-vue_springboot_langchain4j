@@ -21,13 +21,13 @@ import lombok.extern.slf4j.Slf4j;
 public class 全局异常管理 {
 
     @ExceptionHandler(业务异常.class)
-    public 前端接收数据格式response<?> businessExceptionHandler(业务异常 e) {
+    public 前端接收数据格式baseresponse<?> businessExceptionHandler(业务异常 e) {
         log.error("BusinessException", e);
         return 前端接收数据统一异常出口result.error(e.getCode(), e.getMessage());
     }
 
     @ExceptionHandler(RuntimeException.class)
-    public 前端接收数据格式response<?> runtimeExceptionHandler(RuntimeException e) {
+    public 前端接收数据格式baseresponse<?> runtimeExceptionHandler(RuntimeException e) {
         log.error("RuntimeException", e);
         return 前端接收数据统一异常出口result.error(错误代码.SYSTEM_ERROR, "系统错误");
     }

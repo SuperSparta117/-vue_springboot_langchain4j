@@ -23,7 +23,7 @@ import lombok.Data;
 //     return ResultUtils.success("查询成功");
 // }
 @Data
-public class 前端发送数据格式request {
+public class 前端发送数据格式pagerequest {
 
     /**
      * 当前页号

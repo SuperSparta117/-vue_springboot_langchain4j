@@ -53,7 +53,7 @@ package com.liuming.springandlangchain4j.exception;
 
 // 工具类可以减少这种低级不一致。
 
-public class 统一条件异常 {
+public class 统一条件异常throwUtil {
 
     /**
      * 条件成立则抛异常

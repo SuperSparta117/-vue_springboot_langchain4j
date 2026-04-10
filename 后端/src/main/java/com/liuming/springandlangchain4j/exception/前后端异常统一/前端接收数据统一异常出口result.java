@@ -11,8 +11,8 @@ public class 前端接收数据统一异常出口result {
      * @param <T>  数据类型
      * @return 响应
      */
-    public static <T> 前端接收数据格式response<T> success(T data) {
-        return new 前端接收数据格式response<>(0, data, "ok");
+    public static <T> 前端接收数据格式baseresponse<T> success(T data) {
+        return new 前端接收数据格式baseresponse<>(0, data, "ok");
     }
 
     /**
@@ -21,8 +21,8 @@ public class 前端接收数据统一异常出口result {
      * @param errorCode 错误码
      * @return 响应
      */
-    public static 前端接收数据格式response<?> error(错误代码 errorCode) {
-        return new 前端接收数据格式response<>(errorCode);
+    public static 前端接收数据格式baseresponse<?> error(错误代码 errorCode) {
+        return new 前端接收数据格式baseresponse<>(errorCode);
     }
 
     /**
@@ -32,8 +32,8 @@ public class 前端接收数据统一异常出口result {
      * @param message 错误信息
      * @return 响应
      */
-    public static 前端接收数据格式response<?> error(int code, String message) {
-        return new 前端接收数据格式response<>(code, null, message);
+    public static 前端接收数据格式baseresponse<?> error(int code, String message) {
+        return new 前端接收数据格式baseresponse<>(code, null, message);
     }
 
     /**
@@ -42,7 +42,7 @@ public class 前端接收数据统一异常出口result {
      * @param errorCode 错误码
      * @return 响应
      */
-    public static 前端接收数据格式response<?> error(错误代码 errorCode, String message) {
-        return new 前端接收数据格式response<>(errorCode.getCode(), null, message);
+    public static 前端接收数据格式baseresponse<?> error(错误代码 errorCode, String message) {
+        return new 前端接收数据格式baseresponse<>(errorCode.getCode(), null, message);
     }
 }
